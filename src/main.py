@@ -1,3 +1,6 @@
+"""
+This class allows us to interact with OpenAI using websockets to interact in real time
+"""
 import os
 import signal
 import time
@@ -14,7 +17,7 @@ load_dotenv()
 quitFlag = False
 
 def signal_handler(sig, frame, realtime_instance):
-    """Handle Ctrl+C and initiate graceful shutdown."""
+    #When the user hits Ctrl+C, this function logs the shutdown request, stops realtime interaction, sets quitflag to true which terminates loop
     logging.info('Received Ctrl+C! Initiating shutdown...')
     realtime_instance.stop()
     global quitFlag
@@ -30,13 +33,16 @@ def main():
 
     realtime = Realtime(api_key, ws_url)
 
-    signal.signal(signal.SIGINT, lambda sig, frame: signal_handler(sig, frame, realtime))
+    signal.signal(signal.SIGINT, lambda sig, frame: signal_handler(sig, frame, realtime)) 
+    #binds the SIGINT signal to signal_handler dunction, ensuring the process stops when user interrupts it 
 
     try:
         realtime.start()
         while not quitFlag:
             time.sleep(0.1)
-
+    #while realtime is running, (not quitflag) the main loop will continuously run until ctrl c is hit 
+    #main loop keeps program running while websocket connection is active 
+    
     except Exception as e:
         logging.error(f'Error in main loop: {e}')
         realtime.stop()

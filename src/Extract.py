@@ -2,7 +2,7 @@ import openai
 import csv
 
 # Hardcoded OpenAI API key
-openai.api_key = 'sk-99-zZaA6ISmngoWYxGj8Yo5ASQXfDVJKZoYX7sNvX2T3BlbkFJOvxRu4xhtRPuzQ7cqrJF5DRfUunz4XdTjRwtQgXuUA'  # Replace with your actual API key
+openai.api_key = ''  # Replace with your actual API key
 
 def ask_gpt(message_history):
     """

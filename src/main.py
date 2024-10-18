@@ -5,14 +5,11 @@ import os
 import signal
 import time
 import logging
-from dotenv import load_dotenv
 
 from Realtime import Realtime
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s')
 
-# Load environment variables from a .env file
-load_dotenv()
 
 quitFlag = False
 
@@ -24,7 +21,7 @@ def signal_handler(sig, frame, realtime_instance):
     quitFlag = True
 
 def main():
-    api_key = os.getenv('OPENAI_API_KEY')
+    api_key = ''
     ws_url = 'wss://api.openai.com/v1/realtime?model=gpt-4o-realtime-preview-2024-10-01'
 
     if not api_key:

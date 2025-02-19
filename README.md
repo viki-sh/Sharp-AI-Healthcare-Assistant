@@ -1,4 +1,5 @@
-🔊 Real-time Voice Assistant with OpenAI API
+#🔊 Real-time Voice Assistant with OpenAI API
+
 📌 Overview
 This project implements a real-time voice assistant using OpenAI's GPT-4o Realtime API. The assistant listens for user input, processes it, and provides intelligent responses. The system is designed to run continuously and handle interruptions gracefully.
 
